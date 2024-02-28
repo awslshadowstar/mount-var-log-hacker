@@ -4,6 +4,8 @@ If /var/mount is mounted into a container, and the serviceaccount in the contain
 
 binary name: loghacker
 
+public build image : https://hub.docker.com/r/shadowstar884/loghacker
+
 deploy steps:
 ```bash
 # step 1: create ns and cluster role
