@@ -26,3 +26,9 @@ kubectl exec -it -n mount-log log-hacker -- bash
 # ./loghacker cat /etc/shadow
 
 ```
+
+pow:
+
+![cat-pow](https://github.com/awslshadowstar/mount-var-log-hacker/assets/52888924/55e6599a-1e8d-4824-953b-2464665d5ef5)
+
+![ls-pow](https://github.com/awslshadowstar/mount-var-log-hacker/assets/52888924/caa15335-bc5e-4fa7-80cb-74b351042b79)
