@@ -4,8 +4,11 @@ import (
 	"os"
 )
 
+var DefaultMountPath = "/var/log/host"
+var MountHostPath string
+
 func AttachToRoot() {
-	err := os.Symlink("/", "/var/log/host/root_link")
+	err := os.Symlink("/", MountHostPath+"/root_link")
 	if err != nil {
 		panic(err)
 	}
@@ -14,11 +17,9 @@ func AttachToRoot() {
 }
 
 func DetachFromRoot() {
-	// 符号链接路径
-	linkPath := "/var/log/host/root_link"
 
 	// 删除符号链接
-	err := os.Remove(linkPath)
+	err := os.Remove(MountHostPath + "/root_link")
 	if err != nil {
 		panic(err)
 	}

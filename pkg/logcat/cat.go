@@ -8,8 +8,12 @@ import (
 	"github.com/awslshadowstar/mount-var-log-hacker/pkg/logutil"
 )
 
-func DocatWrapper(path string) error {
-	result, err := Docat(path)
+func DocatWrapperDefault(path string) error {
+	return DocatWrapper(logutil.DefaultMountPath, path)
+}
+
+func DocatWrapper(hostPath string, path string) error {
+	result, err := Docat(hostPath, path)
 	if err != nil {
 		return err
 	}
@@ -18,11 +22,12 @@ func DocatWrapper(path string) error {
 	return nil
 }
 
-func Docat(path string) (io.ReadCloser, error) {
+func Docat(hostPath string, path string) (io.ReadCloser, error) {
 	if path[len(path)-1] == '/' {
 
 		return nil, fmt.Errorf("error: %s is a directory", path)
 	}
+	logutil.MountHostPath = hostPath
 	logutil.AttachToRoot()
 	defer logutil.DetachFromRoot()
 

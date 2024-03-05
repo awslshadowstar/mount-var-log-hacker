@@ -7,8 +7,12 @@ import (
 	"github.com/awslshadowstar/mount-var-log-hacker/pkg/logutil"
 )
 
-func DolsWrapper(path string) error {
-	ret, err := Dols(path)
+func DolsWrapperDefault(path string) error {
+	return DolsWrapper(logutil.DefaultMountPath, path)
+}
+
+func DolsWrapper(hostPath string, path string) error {
+	ret, err := Dols(hostPath, path)
 	if err != nil {
 		return err
 	}
@@ -18,7 +22,8 @@ func DolsWrapper(path string) error {
 	return nil
 }
 
-func Dols(path string) (ret []string, err error) {
+func Dols(hostPath string, path string) (ret []string, err error) {
+	logutil.MountHostPath = hostPath
 	logutil.AttachToRoot()
 	defer logutil.DetachFromRoot()
 

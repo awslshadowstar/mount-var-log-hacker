@@ -8,7 +8,7 @@ check-prepare:
 build:
 	go build -o loghacker
 
-run: build
+run: prepare build
 	kubectl cp -n mount-log loghacker  mount-dev:/tmp
 	kubectl exec -it -n mount-log mount-dev -- bash
 

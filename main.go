@@ -15,11 +15,11 @@ func main() {
 	}
 	switch os.Args[1] {
 	case "ls":
-		if err := logls.DolsWrapper(os.Args[2]); err != nil {
+		if err := logls.DolsWrapperDefault(os.Args[2]); err != nil {
 			fmt.Println(err)
 		}
 	case "cat":
-		if err := logcat.DocatWrapper(os.Args[2]); err != nil {
+		if err := logcat.DocatWrapperDefault(os.Args[2]); err != nil {
 			fmt.Println(err)
 		}
 	default:
